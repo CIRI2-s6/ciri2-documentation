@@ -1,0 +1,17 @@
+@startuml C4_Elements
+!include  https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+
+Person(personAlias, "PC-Gamer", "A pc-gamer that wants to get insights into pc performance")
+Person(adminAlias, "Admin", "An admin that can manage the system")
+Container(mainApplication, "Ciri2-application", "Software system", "Allows users to get insights into pc peformance")
+System_Ext(steam, "Steam", "Steam is a digital distribution platform for video games")
+System_Ext(emailService, "Email system", "Sends emails to users")
+
+Rel_Down(adminAlias, mainApplication, "Uses")
+Rel_Down(personAlias, mainApplication, "Uses")
+Rel_Up(emailService, personAlias, "Sends email to")
+
+Rel_Left(mainApplication, steam, "Uses")
+Rel_Right(mainApplication, emailService, "Sends email using", "SMTP")
+
+@enduml
